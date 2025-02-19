@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxeStore - Products</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --primary-color: #000;
+      --secondary-color: #444;
+      --text-color: #fff;
+    }
+
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Products Page Styles */
+    .products-page {
+      padding: 100px 50px;
+      background-color: #fff;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: var(--primary-color);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .product-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-title {
+      font-size: 20px;
+      margin: 10px 0;
+      color: var(--primary-color);
+    }
+
+    .product-price {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #777;
+    }
+
+    .quick-shop-btn {
+      margin-top: 15px;
+      padding: 10px 25px;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .quick-shop-btn:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .cta-btn {
+      /* Keep existing styles */
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">FlexiGoods</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="products-page" id="products">
+    <h2 class="section-title">Our Collection</h2>
+    <div class="product-grid">
+      <!-- Product Card 1 -->
+      <div class="product-card">
+        <img
+          src="https://images.unsplash.com/photo-1549298916-f52d724204b4"
+          alt="Leather Oxford Shoes"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Leather Oxford Shoes</h3>
+          <p class="product-price">$249.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 2 -->
+      <div class="product-card">
+        <img
+          src="https://images.unsplash.com/photo-1583394838336-acd977736f90"
+          alt="Designer Tote Bag"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Designer Tote Bag</h3>
+          <p class="product-price">$299.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 3 -->
+      <div class="product-card">
+        <img
+          src="images/watch.jpg"
+          alt="Elegant Wrist Watch"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Elegant Wrist Watch</h3>
+          <p class="product-price">$199.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 4 -->
+      <div class="product-card">
+        <img
+          src="images/silk.jpg"
+          alt="Silk Scarf"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Silk Scarf</h3>
+          <p class="product-price">$89.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 5 -->
+      <div class="product-card">
+        <img
+          src="images/sunglasses.jpg"
+          alt="Vintage Sunglasses"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Vintage Sunglasses</h3>
+          <p class="product-price">$129.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 6 -->
+      <div class="product-card">
+        <img
+          src="images/handbag.jpg"
+          alt="Luxury Handbag"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Luxury Handbag</h3>
+          <p class="product-price">$349.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 7 -->
+      <div class="product-card">
+        <img
+          src="images/heels.jpg"
+          alt="Chic High Heels"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Chic High Heels</h3>
+          <p class="product-price">$179.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 8 -->
+      <div class="product-card">
+        <img
+          src="images/sneakers.jpg"
+          alt="Casual Sneakers"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Casual Sneakers</h3>
+          <p class="product-price">$109.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 9 -->
+      <div class="product-card">
+        <img
+          src="images/dress.jpg"
+          alt="Elegant Dress"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Elegant Dress</h3>
+          <p class="product-price">$399.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 10 -->
+      <div class="product-card">
+        <img
+          src="images/jacket.jpg"
+          alt="Modern Jacket"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Modern Jacket</h3>
+          <p class="product-price">$279.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 11 -->
+      <div class="product-card">
+        <img
+          src="images/belt.jpg"
+          alt="Stylish Belt"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Stylish Belt</h3>
+          <p class="product-price">$69.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+      <!-- Product Card 12 -->
+      <div class="product-card">
+        <img
+          src="images/hat.jpg"
+          alt="Classic Fedora Hat"
+          class="product-image"
+        />
+        <div class="product-info">
+          <h3 class="product-title">Classic Fedora Hat</h3>
+          <p class="product-price">$59.99</p>
+          <button class="quick-shop-btn">Quick Shop</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Quick Shop button interaction
+    document.querySelectorAll('.quick-shop-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const product = this.closest('.product-card');
+        const title = product.querySelector('.product-title').textContent;
+        const price = product.querySelector('.product-price').textContent;
+        alert(`Added to cart: ${title} - ${price}`);
+      });
+    });
+  </script>
+</body>
+</html>
