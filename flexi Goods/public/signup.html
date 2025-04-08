@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexi Goods - Sign Up / Sign In</title>
+  <style>
+    /* Global reset and box-sizing */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Main container for both forms */
+    .container {
+      position: relative;
+      width: 900px;
+      height: 550px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Common styling for form containers */
+    .form-container {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      transition: all 0.6s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+      max-width: 300px;
+    }
+    .form-container h1 {
+      margin-bottom: 15px;
+    }
+    .form-container input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .form-container button {
+      margin-top: 10px;
+      padding: 12px 45px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ff9068;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+    .form-container button:hover {
+      background-color: #ff6f61;
+    }
+
+    /* Sign-in form: left side */
+    .sign-in-container {
+      left: 0;
+      z-index: 2; /* Visible initially */
+    }
+
+    /* Sign-up form: right side */
+    .sign-up-container {
+      left: 50%;
+      z-index: 1; /* Behind overlay initially */
+    }
+
+    /* Overlay container */
+    .overlay-container {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 100; /* Above the inactive form, below the active form */
+      transition: left 0.6s ease-in-out;
+    }
+
+    /* Overlay background */
+    .overlay {
+      position: relative;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(to right, #ff6f61, #ff9068);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.6s ease-in-out;
+      transform: translateX(0);
+    }
+
+    /* Overlay panels */
+    .overlay-panel {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+    .overlay-panel h1 {
+      margin-bottom: 15px;
+    }
+    .overlay-panel p {
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    .overlay-panel button {
+      background-color: transparent;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      padding: 10px 30px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .overlay-panel button:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    .overlay-left {
+      left: 0;
+    }
+    .overlay-right {
+      right: 0;
+    }
+
+    /* Toggle Classes */
+    .container.right-panel-active .sign-in-container {
+      z-index: 1; /* Moves behind overlay */
+    }
+    .container.right-panel-active .sign-up-container {
+      z-index: 101; /* Moves in front of overlay */
+    }
+    .container.right-panel-active .overlay-container {
+      left: 0; /* Slides overlay container to the left */
+    }
+    .container.right-panel-active .overlay {
+      transform: translateX(50%); /* Shifts overlay background */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="container">
+    <!-- Sign Up Form -->
+    <div class="form-container sign-up-container">
+      <form action="/signup" method="POST">
+        <h1>Create Account</h1>
+        <input type="text" placeholder="Full Name" name="name" required />
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="password" placeholder="Password" name="password" required />
+        <input type="password" placeholder="Confirm Password" name="confirmPassword" required />
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+
+    <!-- Sign In Form -->
+    <div class="form-container sign-in-container">
+      <form action="/signin" method="POST">
+        <h1>Sign In</h1>
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="password" placeholder="Password" name="password" required />
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+
+    <!-- Overlay container -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <!-- Left panel: prompts to sign in -->
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>If you already have an account, just sign in. We’ve missed you!</p>
+          <button id="signIn">Sign In</button>
+        </div>
+
+        <!-- Right panel: prompts to sign up -->
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p>Enter your details and start your journey with us.</p>
+          <button id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('container');
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+
+    signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
+    signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
+
+    // Password validation function
+    function validatePassword(password) {
+      const minLength = 8;
+      const hasUpperCase = /[A-Z]/.test(password);
+      const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+      if (password.length < minLength) {
+        return "Password must be at least 8 characters long.";
+      }
+      if (!hasUpperCase) {
+        return "Password must contain at least one uppercase letter.";
+      }
+      if (!hasSpecialChar) {
+        return "Password must contain at least one special character (e.g., !, @, #, $, etc.).";
+      }
+      return null; // No errors
+    }
+
+    // Sign Up
+    document.querySelector('.sign-up-container form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = e.target.name.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      const confirmPassword = e.target.confirmPassword.value;
+
+      // Check if passwords match
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+      }
+
+      // Validate password requirements
+      const passwordError = validatePassword(password);
+      if (passwordError) {
+        alert(passwordError);
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      if (users.some(u => u.email === email)) {
+        alert('Email already registered');
+        return;
+      }
+
+      users.push({ name, email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Sign up successful! Please sign in.');
+      container.classList.remove('right-panel-active');
+      e.target.reset();
+    });
+
+    // Sign In
+    document.querySelector('.sign-in-container form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if (user) {
+        localStorage.setItem('userLoggedIn', 'true');
+        window.location.href = '/dashboard.html'; // Adjust path to match your file name
+      } else {
+        alert('Invalid email or password');
+      }
+    });
+
+    container.classList.remove('right-panel-active');
+  </script>
+
+</body>
+</html>

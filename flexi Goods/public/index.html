@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flexi Goods | Home</title>
+  <style>
+    /* Basic CSS styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    /* Header & Navigation */
+    .header-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 20px;
+    }
+    .search-container {
+      flex-grow: 1;
+      max-width: 600px;
+    }
+    .search-bar {
+      display: flex;
+      gap: 10px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 20px;
+      border: 2px solid #ff6f61;
+      border-radius: 24px;
+      font-size: 16px;
+      outline: none;
+    }
+    .search-button {
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .search-button:hover {
+      background-color: #e55a4d;
+    }
+    .nav-button {
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid #ff6f61;
+    }
+    .nav-button.signup {
+      background-color: #ff6f61;
+      color: white;
+    }
+    .nav-button:hover {
+      background-color: #ff6f61;
+      color: white;
+    }
+    nav ul {
+      display: flex;
+      flex-direction: row;
+      margin-left: auto;
+      gap: 30px;
+      align-items: center;
+    }
+    nav li {
+      margin: 0;
+    }
+    header {
+      background-color: #f8f8f8;
+      padding: 20px 40px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ff6f61;
+    }
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 600px;
+      color: black;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      background: linear-gradient(white), url('/Frontend/images/hero.jpeg') no-repeat center/cover;
+    }
+    .hero-image {
+      width: 400px;
+      height: auto;
+      max-width: 100%;
+      display: none;
+    }
+    .hero-text {
+      z-index: 1;
+    }
+    .hero h2 {
+      font-size: 3em;
+      margin: 0 0 20px;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin: 0 0 30px;
+    }
+    .hero .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 900px;
+      margin-top: 20px;
+    }
+    .cta-button {
+      background-color: #ff6f61;
+      color: #fff;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+      z-index: 1;
+    }
+    .cta-button:hover {
+      background-color: #e55a4d;
+    }
+    /* Products Section */
+    .products {
+      padding: 50px 20px;
+    }
+    .products h3 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .product-price {
+      color: #ff6f61;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    /* About Us Section */
+    .about {
+      padding: 50px 20px;
+      background-color: #f8f8f8;
+      text-align: center;
+    }
+    .about h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .about p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    /* Contact Section */
+    .contact {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .contact h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .contact p {
+      margin-bottom: 10px;
+    }
+    .contact a {
+      color: #ff6f61;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+    /* Footer */
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .admin-login-button {
+      background-color: #ff6f61;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .admin-login-button:hover {
+      background-color: #e55a4d;
+      border-color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Flexi Goods</h1>
+      <!-- Search Bar -->
+      <div class="search-container">
+        <form class="search-bar" id="searchForm" action="#products" method="GET">
+          <input type="text" class="search-input" placeholder="Search for anything..." aria-label="Search" name="q">
+          <button type="submit" class="search-button">Search</button>
+        </form>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="signup.html" class="nav-button">Sign In</a></li>
+          <li><a href="signup.html" class="nav-button signup">Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <img src="/Frontend/images/hero.jpeg" alt="Hero Image" class="hero-image">
+    <div class="hero-text">
+      <h2>Welcome to Flexi Goods</h2>
+      <p>Your one-stop shop for flexible and innovative products.</p>
+      <a href="signup.html" class="cta-button">Explore Our Products</a>
+    </div>
+    <div class="products-grid" id="heroProductList">
+      <!-- Hero products will be loaded here -->
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <h3>Featured Products</h3>
+    <div class="products-grid" id="productList">
+      <!-- Products will be loaded here -->
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h3>About Us</h3>
+    <p>
+      Welcome to Flexi Goods, where innovation meets convenience. We are a passionate team dedicated to bringing you the best in flexible, high-quality products designed to enhance your everyday life. Founded in 2025, our mission is to provide unique solutions that adapt to your needs, all while maintaining a commitment to sustainability and customer satisfaction. Join us on this journey as we redefine shopping with creativity and care.
+    </p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h3>Contact Us</h3>
+    <p>Email: <a href="mailto:support@flexigoods.com">support@flexigoods.com</a></p>
+    <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    <p>Address: 123 Flexi Street, Innovation City, FC 45678</p>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© 2025 Flexi Goods. All rights reserved.</p>
+      <a href="adminlogin.html" class="admin-login-button">Admin Login</a>
+    </div>
+  </footer>
+
+  <script>
+    const heroContainer = document.getElementById('heroProductList');
+    const featuredContainer = document.getElementById('productList');
+  
+    function loadProducts(searchQuery = '') {
+      const products = JSON.parse(localStorage.getItem('products')) || [];
+      const filteredProducts = searchQuery
+        ? products.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                              p.description.toLowerCase().includes(searchQuery.toLowerCase()))
+        : products;
+  
+      heroContainer.innerHTML = '';
+      featuredContainer.innerHTML = '';
+  
+      filteredProducts.slice(0, 4).forEach(product => createProductCard(product, heroContainer));
+      filteredProducts.forEach(product => createProductCard(product, featuredContainer));
+  
+      if (filteredProducts.length === 0) {
+        featuredContainer.innerHTML = `<p>No products found for "${searchQuery}"</p>`;
+      }
+    }
+  
+    function createProductCard(product, container) {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${product.image_url}" class="product-image" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <div class="product-price">N$${product.price}</div>
+      `;
+      container.appendChild(card);
+    }
+  
+    const setupSearch = () => {
+      const searchForm = document.getElementById('searchForm');
+      const searchInput = document.querySelector('.search-input');
+      let searchTimeout;
+  
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => loadProducts(e.target.value.trim()), 300);
+      });
+  
+      searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        loadProducts(searchInput.value.trim());
+      });
+    };
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProducts();
+      setupSearch();
+    });
+  </script>
+</body>
+</html>
